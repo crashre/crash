@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>crashV2.1 V5</title>
+<title>crashV2.1 </title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -153,13 +153,23 @@ button.action{
     color:black;
     box-shadow:0 0 25px #00ffcc;
 }
+
+/* Telegram Contact */
+.telegram-contact{
+    margin:40px 0;
+    font-size:16px;
+}
+.telegram-contact a{
+    color:#00ffcc;
+    text-decoration:underline;
+}
 </style>
 </head>
 
 <body>
 
 <div class="topbar">
-    <div id="topTitle">crashV2.1 V5</div>
+    <div id="topTitle">crashV2.1 </div>
     <div class="lang-switch">
         <button onclick="setLang('en')">EN</button>
         <button onclick="setLang('zh')">中文</button>
@@ -184,7 +194,7 @@ button.action{
     <div class="modal-content">
         <h3 id="verifyTitle">Enter ID</h3>
         <input type="text">
-        <button class="action" onclick="invalidID()" id="verifyAction">Verify</button>
+        <button class="action" onclick="verifyID()" id="verifyAction">Verify</button>
         <div class="close" onclick="closeModal()" id="close1">Close</div>
     </div>
 </div>
@@ -201,9 +211,9 @@ button.action{
         <h4 id="payTitle">Available Payment Methods</h4>
 
         <div class="payment-box">
-            <div class="pay-card" onclick="fakePay('Binance')">Binance</div>
-            <div class="pay-card" onclick="fakePay('Trust Wallet')">Trust Wallet</div>
-            <div class="pay-card" onclick="fakePay('Visa')">Visa Card</div>
+            <div class="pay-card" onclick="openPayment('Binance')">Binance</div>
+            <div class="pay-card" onclick="openPayment('Trust Wallet')">Trust Wallet</div>
+            <div class="pay-card" onclick="openPayment('Visa')">Visa Card</div>
         </div>
 
         <div class="close" onclick="closeModal()" id="close2">Close</div>
@@ -217,6 +227,12 @@ button.action{
         <p id="downText">App not available in your country ⚠️</p>
         <div class="close" onclick="closeModal()" id="close3">Close</div>
     </div>
+</div>
+
+<!-- Telegram Contact -->
+<div class="telegram-contact">
+    <p>Contact Developer on Telegram:</p>
+    <a href="https://t.me/jinesomsn" target="_blank">@jinesomsn</a>
 </div>
 
 <script>
@@ -271,16 +287,37 @@ function closeModal(){
     document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
 }
 
-/* Actions */
-function invalidID(){
-    alert(currentLang==="en" 
-    ? "Your ID is currently invalid because it has not been used for an extended period. Please contact support for further assistance." 
-    : "您的ID目前无效，因为长时间未使用。如需帮助，请联系支持团队。");
+/* Verify ID */
+function verifyID(){
+    const input = document.querySelector("#verify input").value;
+    if(input === "1174328239"){
+        alert(currentLang==="en" ? 
+            "Your ID is valid ✅" :
+            "您的ID有效 ✅"
+        );
+    }else{
+        alert(currentLang==="en" 
+            ? "Your ID is currently invalid because it has not been used for an extended period. Please contact support for further assistance." 
+            : "您的ID目前无效，因为长时间未使用。如需帮助，请联系支持团队。"
+        );
+    }
 }
-function fakePay(method){
-    alert(currentLang==="en" ? 
-    method+" payment temporarily unavailable ⚠️" :
-    method+" 支付暂时不可用 ⚠️");
+
+/* Payment */
+function openPayment(method){
+    let url = "";
+    switch(method){
+        case "Binance":
+            url = "https://www.binance.com/";
+            break;
+        case "Trust Wallet":
+            url = "https://trustwallet.com/";
+            break;
+        case "Visa":
+            url = "https://www.visa.com/";
+            break;
+    }
+    window.open(url, "_blank");
 }
 </script>
 
