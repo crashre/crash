@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>crashV2.1 </title>
+<title>crashV2.2 </title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -169,7 +169,7 @@ button.action{
 <body>
 
 <div class="topbar">
-    <div id="topTitle">crashV2.1 </div>
+    <div id="topTitle">crashV2.2 </div>
     <div class="lang-switch">
         <button onclick="setLang('en')">EN</button>
         <button onclick="setLang('zh')">中文</button>
@@ -177,7 +177,7 @@ button.action{
 </div>
 
 <div class="logo-container">
-    <div class="logo-text">CRASH V2.1</div>
+    <div class="logo-text">CRASH V2.2</div>
     <div class="logo-sub" id="subLogo">EXPERIMENTAL ACCESS</div>
 </div>
 
@@ -187,6 +187,7 @@ button.action{
     <div class="card" onclick="openModal('verify')" id="verifyBtn">Verify ID</div>
     <div class="card" onclick="openModal('subscribe')" id="buyBtn">Buy Code</div>
     <div class="card" onclick="openModal('download')" id="downloadBtn">Download App</div>
+    <div class="card" onclick="openModal('track')" id="trackBtn">Track Order</div>
 </div>
 
 <!-- VERIFY -->
@@ -205,17 +206,13 @@ button.action{
         <h3 id="subTitle">Subscription</h3>
         <p id="subText1">1 Hour = 40 USD</p>
         <p id="subText2">Each extra hour +40 USD</p>
-
         <hr style="margin:20px 0;border:1px solid #ff0033;">
-
         <h4 id="payTitle">Available Payment Methods</h4>
-
         <div class="payment-box">
             <div class="pay-card" onclick="openPayment('Binance')">Binance</div>
             <div class="pay-card" onclick="openPayment('Trust Wallet')">Trust Wallet</div>
             <div class="pay-card" onclick="openPayment('Visa')">Visa Card</div>
         </div>
-
         <div class="close" onclick="closeModal()" id="close2">Close</div>
     </div>
 </div>
@@ -229,16 +226,28 @@ button.action{
     </div>
 </div>
 
-<!-- Telegram Contact -->
+<!-- TRACK ORDER -->
+<div class="modal" id="track">
+    <div class="modal-content">
+        <h3 id="trackTitle">Track Your Order</h3>
+        <input type="text" id="trackId" placeholder="Enter ID">
+        <input type="text" id="trackRef" placeholder="Enter Transaction ID">
+        <button class="action" onclick="trackOrder()" id="trackAction">OK</button>
+        <div style="margin-top:15px;font-size:14px;" id="trackMessage"></div>
+        <div class="close" onclick="closeModal()" id="close4">Close</div>
+    </div>
+</div>
+
+<!-- Telegram -->
 <div class="telegram-contact">
     <p>Contact Developer on Telegram:</p>
     <a href="https://t.me/jinesomsn" target="_blank">@jinesomsn</a>
 </div>
 
 <script>
+
 let currentLang="en";
 
-/* Crash Counter */
 let value=1.00;
 setInterval(()=>{
     value+=0.01;
@@ -246,7 +255,6 @@ setInterval(()=>{
     document.getElementById("crash").innerText=value.toFixed(2)+"x";
 },100);
 
-/* Language System */
 function setLang(lang){
     currentLang=lang;
 
@@ -255,70 +263,59 @@ function setLang(lang){
         document.getElementById("verifyBtn").innerText="Verify ID";
         document.getElementById("buyBtn").innerText="Buy Code";
         document.getElementById("downloadBtn").innerText="Download App";
-        document.getElementById("verifyTitle").innerText="Enter ID";
-        document.getElementById("verifyAction").innerText="Verify";
-        document.getElementById("subTitle").innerText="Subscription";
-        document.getElementById("subText1").innerText="1 Hour = 40 USD";
-        document.getElementById("subText2").innerText="Each extra hour +40 USD";
-        document.getElementById("payTitle").innerText="Available Payment Methods";
-        document.getElementById("downTitle").innerText="Download App";
-        document.getElementById("downText").innerText="App not available in your country ⚠️";
+        document.getElementById("trackBtn").innerText="Track Order";
+        document.getElementById("trackTitle").innerText="Track Your Order";
     }else{
         document.getElementById("subLogo").innerText="实验访问";
         document.getElementById("verifyBtn").innerText="验证ID";
         document.getElementById("buyBtn").innerText="购买代码";
         document.getElementById("downloadBtn").innerText="下载应用";
-        document.getElementById("verifyTitle").innerText="输入ID";
-        document.getElementById("verifyAction").innerText="验证";
-        document.getElementById("subTitle").innerText="订阅";
-        document.getElementById("subText1").innerText="1小时 = 40 美元";
-        document.getElementById("subText2").innerText="每增加1小时 +40 美元";
-        document.getElementById("payTitle").innerText="可用支付方式";
-        document.getElementById("downTitle").innerText="下载应用";
-        document.getElementById("downText").innerText="该应用在您的国家不可用 ⚠️";
+        document.getElementById("trackBtn").innerText="订单跟踪";
+        document.getElementById("trackTitle").innerText="跟踪您的订单";
     }
 }
 
-/* Modals */
 function openModal(id){
     document.getElementById(id).style.display="flex";
 }
+
 function closeModal(){
     document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
 }
 
-/* Verify ID */
 function verifyID(){
     const input = document.querySelector("#verify input").value;
     if(input === "1174328239"){
-        alert(currentLang==="en" ? 
-            "Your ID is valid ✅" :
-            "您的ID有效 ✅"
-        );
+        alert("Your ID is valid ✅");
     }else{
-        alert(currentLang==="en" 
-            ? "Your ID is currently invalid because it has not been used for an extended period. Please contact support for further assistance." 
-            : "您的ID目前无效，因为长时间未使用。如需帮助，请联系支持团队。"
-        );
+        alert("Your ID is currently invalid because it has not been used for an extended period. Please contact support for further assistance.");
     }
 }
 
-/* Payment */
-function openPayment(method){
-    let url = "";
-    switch(method){
-        case "Binance":
-            url = "https://www.binance.com/";
-            break;
-        case "Trust Wallet":
-            url = "https://trustwallet.com/";
-            break;
-        case "Visa":
-            url = "https://www.visa.com/";
-            break;
+function trackOrder(){
+    const id = document.getElementById("trackId").value;
+    const ref = document.getElementById("trackRef").value;
+    const messageBox = document.getElementById("trackMessage");
+
+    if(id === "1174328239" && ref === "CH13890"){
+        messageBox.innerHTML =
+        "<span style='color:#00ffcc'>The payment process has been successfully completed.<br>The code is currently under preparation.</span><br><br><small style='color:#aaa'>Please note: The preparation of the code may take up to 15 days.</small>";
+    }else{
+        messageBox.innerHTML =
+        "<span style='color:red'>The provided information is incorrect. Please verify your details and try again.</span>";
     }
-    window.open(url, "_blank");
 }
+
+function openPayment(method){
+    let url="";
+    switch(method){
+        case "Binance": url="https://www.binance.com/"; break;
+        case "Trust Wallet": url="https://trustwallet.com/"; break;
+        case "Visa": url="https://www.visa.com/"; break;
+    }
+    window.open(url,"_blank");
+}
+
 </script>
 
 </body>
