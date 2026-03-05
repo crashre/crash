@@ -8,197 +8,161 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: radial-gradient(circle at top, #111, #000);
-    color: #fff;
-    text-align: center;
+body{
+    margin:0;
+    font-family:'Orbitron', sans-serif;
+    background: radial-gradient(circle at top,#111,#000);
+    color:#fff;
+    text-align:center;
 }
 
-/* شريط الصيانة المتحرك */
-.maintenance-bar {
-    background: #ffcc00;
-    color: #000;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 14px;
-    border-bottom: 2px solid #ccaa00;
-    box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
-    animation: pulse 2s infinite;
-    text-transform: uppercase;
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 30px;
+    background:#000;
+    border-bottom:1px solid red;
 }
 
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { opacity: 1; }
+.lang-switch button{
+    background:black;
+    border:1px solid red;
+    color:red;
+    padding:5px 15px;
+    cursor:pointer;
+    margin-left:5px;
 }
 
-/* Top Bar */
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 30px;
-    background: #000;
-    border-bottom: 1px solid red;
-    align-items: center;
+.lang-switch button:hover{
+    background:red;
+    color:black;
 }
 
-.lang-switch button {
-    background: black;
-    border: 1px solid red;
-    color: red;
-    padding: 5px 15px;
-    cursor: pointer;
-    margin-left: 5px;
+.logo-container{
+    margin-top:40px;
 }
 
-.lang-switch button:hover {
-    background: red;
-    color: black;
+.logo-text{
+    font-size:40px;
+    color:#ff0033;
+    text-shadow:0 0 20px red,0 0 40px red;
 }
 
-/* Logo */
-.logo-container {
-    margin-top: 40px;
+.logo-sub{
+    font-size:14px;
+    letter-spacing:4px;
+    color:#00ffcc;
+    text-shadow:0 0 15px #00ffcc;
 }
 
-.logo-text {
-    font-size: 40px;
-    color: #ff0033;
-    text-shadow: 0 0 20px red, 0 0 40px red;
+#crash{
+    font-size:42px;
+    margin:25px 0;
+    color:#00ffcc;
+    text-shadow:0 0 20px #00ffcc;
 }
 
-.logo-sub {
-    font-size: 14px;
-    letter-spacing: 4px;
-    color: #00ffcc;
-    text-shadow: 0 0 15px #00ffcc;
+.container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:40px;
+    flex-wrap:wrap;
 }
 
-/* Crash Counter */
-#crash {
-    font-size: 42px;
-    margin: 25px 0;
-    color: #00ffcc;
-    text-shadow: 0 0 20px #00ffcc;
+.card{
+    background:#111;
+    padding:25px 40px;
+    border-radius:12px;
+    border:1px solid red;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-/* Cards */
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-    padding: 0 20px;
+.card:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 40px red;
 }
 
-.card {
-    background: #111;
-    padding: 25px 40px;
-    border-radius: 12px;
-    border: 1px solid red;
-    cursor: pointer;
-    transition: 0.3s;
-    min-width: 150px;
+.modal{
+    display:none;
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
 }
 
-.card:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 40px red;
+.modal-content{
+    background:#111;
+    padding:30px;
+    border-radius:12px;
+    width:320px;
+    border:1px solid red;
 }
 
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+input{
+    width:100%;
+    padding:10px;
+    margin:15px 0;
+    background:#000;
+    border:1px solid red;
+    color:#fff;
 }
 
-.modal-content {
-    background: #111;
-    padding: 30px;
-    border-radius: 12px;
-    width: 320px;
-    border: 1px solid red;
+button.action{
+    background:red;
+    border:none;
+    padding:10px 20px;
+    color:#fff;
+    cursor:pointer;
 }
 
-input {
-    width: 90%;
-    padding: 10px;
-    margin: 15px 0;
-    background: #000;
-    border: 1px solid red;
-    color: #fff;
-    text-align: center;
+.close{
+    margin-top:15px;
+    cursor:pointer;
+    color:#aaa;
 }
 
-button.action {
-    background: red;
-    border: none;
-    padding: 10px 20px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
+.payment-box{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-top:15px;
 }
 
-.close {
-    margin-top: 15px;
-    cursor: pointer;
-    color: #aaa;
-    font-size: 12px;
+.pay-card{
+    background:#000;
+    padding:12px;
+    border:1px solid #00ffcc;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-/* Payment */
-.payment-box {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 15px;
+.pay-card:hover{
+    background:#00ffcc;
+    color:black;
+    box-shadow:0 0 25px #00ffcc;
 }
 
-.pay-card {
-    background: #000;
-    padding: 12px;
-    border: 1px solid #00ffcc;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+.telegram-contact{
+    margin:40px 0;
+    font-size:16px;
 }
-
-.pay-card:hover {
-    background: #00ffcc;
-    color: black;
-    box-shadow: 0 0 25px #00ffcc;
-}
-
-/* Telegram Contact */
-.telegram-contact {
-    margin: 40px 0;
-    font-size: 16px;
-}
-.telegram-contact a {
-    color: #00ffcc;
-    text-decoration: underline;
+.telegram-contact a{
+    color:#00ffcc;
+    text-decoration:underline;
 }
 </style>
 </head>
 
 <body>
 
-<div class="maintenance-bar" id="maintenanceBar">
-    ⚠️ <span id="maintText">Site will be under maintenance from midnight</span> ⚠️
-</div>
-
 <div class="topbar">
-    <div id="topTitle">crashV2.2 </div>
+    <div id="topTitle">crashV2.3 </div>
     <div class="lang-switch">
         <button onclick="setLang('en')">EN</button>
         <button onclick="setLang('zh')">中文</button>
@@ -206,7 +170,7 @@ button.action {
 </div>
 
 <div class="logo-container">
-    <div class="logo-text">CRASH V2.2</div>
+    <div class="logo-text">CRASH V2.3</div>
     <div class="logo-sub" id="subLogo">EXPERIMENTAL ACCESS</div>
 </div>
 
@@ -217,6 +181,7 @@ button.action {
     <div class="card" onclick="openModal('subscribe')" id="buyBtn">Buy Code</div>
     <div class="card" onclick="openModal('download')" id="downloadBtn">Download App</div>
     <div class="card" onclick="openModal('track')" id="trackBtn">Track Order</div>
+    <div class="card" onclick="openModal('play')" id="playBtn">Play</div>
 </div>
 
 <div class="modal" id="verify">
@@ -263,12 +228,24 @@ button.action {
     </div>
 </div>
 
+<div class="modal" id="play">
+    <div class="modal-content">
+        <h3>Enter ID & Code</h3>
+        <input type="text" id="playId" placeholder="Enter ID">
+        <input type="text" id="playCode" placeholder="Enter Code">
+        <button class="action" onclick="playGame()">Start</button>
+        <div style="margin-top:15px;font-size:14px;" id="playMessage"></div>
+        <div class="close" onclick="closeModal()">Close</div>
+    </div>
+</div>
+
 <div class="telegram-contact">
-    <p id="contactText">Contact Developer on Telegram:</p>
+    <p>Contact Developer on Telegram:</p>
     <a href="https://t.me/jinesomsn" target="_blank">@jinesomsn</a>
 </div>
 
 <script>
+
 let currentLang="en";
 
 let value=1.00;
@@ -282,23 +259,19 @@ function setLang(lang){
     currentLang=lang;
 
     if(lang==="en"){
-        document.getElementById("maintText").innerText="Site will be under maintenance from midnight";
         document.getElementById("subLogo").innerText="EXPERIMENTAL ACCESS";
         document.getElementById("verifyBtn").innerText="Verify ID";
         document.getElementById("buyBtn").innerText="Buy Code";
         document.getElementById("downloadBtn").innerText="Download App";
         document.getElementById("trackBtn").innerText="Track Order";
         document.getElementById("trackTitle").innerText="Track Your Order";
-        document.getElementById("contactText").innerText="Contact Developer on Telegram:";
     }else{
-        document.getElementById("maintText").innerText="网站将于午夜进行维护";
         document.getElementById("subLogo").innerText="实验访问";
         document.getElementById("verifyBtn").innerText="验证ID";
         document.getElementById("buyBtn").innerText="购买代码";
         document.getElementById("downloadBtn").innerText="下载应用";
         document.getElementById("trackBtn").innerText="订单跟踪";
         document.getElementById("trackTitle").innerText="跟踪您的订单";
-        document.getElementById("contactText").innerText="通过 Telegram 联系开发人员:";
     }
 }
 
@@ -326,11 +299,29 @@ function trackOrder(){
 
     if(id === "1174328239" && ref === "CH13890"){
         messageBox.innerHTML =
-        "<span style='color:#00ffcc'>The payment process has been successfully completed.<br>The code is currently under preparation.</span><br><br><small style='color:#aaa'>Please note: The preparation of the code may take up to 15 days.</small>";
+        "<span style='color:#00ffcc'>Payment completed successfully ✅</span><br><br>" +
+        "Your access code is:<br><b style='color:#00ffcc;font-size:18px'>#A167289292</b><br><br>" +
+        "<small style='color:#aaa'>⚠️ This code is valid for 1 hour only.<br>It must be used before March 7.</small>";
     }else{
         messageBox.innerHTML =
         "<span style='color:red'>The provided information is incorrect. Please verify your details and try again.</span>";
     }
+}
+
+function playGame(){
+
+    const id = document.getElementById("playId").value;
+    const code = document.getElementById("playCode").value;
+    const message = document.getElementById("playMessage");
+
+    if(id === "1174328239" && code === "#A167289292"){
+        message.innerHTML =
+        "<span style='color:red'>This ID has already been used.</span>";
+    }else{
+        message.innerHTML =
+        "<span style='color:red'>Invalid ID or Code.</span>";
+    }
+
 }
 
 function openPayment(method){
