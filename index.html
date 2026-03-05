@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CrashV2.3 - Pro Edition</title>
+<title>CrashV2.2 - Pro Edition</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
@@ -167,7 +167,7 @@ button.action {
 <body>
 
 <div class="topbar">
-<div style="font-weight:bold;color:var(--secondary)">crashV2.3</div>
+<div style="font-weight:bold;color:var(--secondary)">crashV2.2</div>
 <div class="lang-switch">
 <button onclick="setLang('en')">EN</button>
 <button onclick="setLang('zh')">中文</button>
@@ -175,7 +175,7 @@ button.action {
 </div>
 
 <div class="logo-container">
-<div class="logo-text">CRASH V2.3</div>
+<div class="logo-text">CRASH V2.2</div>
 <div id="subLogo">EXPERIMENTAL ACCESS</div>
 </div>
 
@@ -218,6 +218,28 @@ button.action {
 <div id="playMessage" class="result-msg"></div>
 <div class="close-btn" onclick="closeModal()">Close</div>
 </div>
+</div>
+<div class="modal" id="subscribe">
+  <div class="modal-content">
+    <h3>Payment Information</h3>
+    <p>Price per hour: <b>60 USDT</b></p>
+    <p>Send payment to:</p>
+    <p><b>USDT (TRC20)</b></p>
+    <p>Wallet Address:</p>
+    <p style="word-break:break-all;">TX8F7J8K3M9P2X</p>
+    <p>After payment contact the developer.</p>
+    <div class="close-btn" onclick="closeModal()">Close</div>
+  </div>
+</div>
+
+<!-- Download App -->
+<div class="modal" id="download">
+  <div class="modal-content">
+    <h3>Download App</h3>
+    <p>This application is currently not available in your country.</p>
+    <p>Please contact the developer for access.</p>
+    <div class="close-btn" onclick="closeModal()">Close</div>
+  </div>
 </div>
 
 <div class="telegram-contact">
