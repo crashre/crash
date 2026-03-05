@@ -3,158 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>crashV2.3 </title>
+<title>CrashV2.3 - Pro Edition</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-    margin:0;
-    font-family:'Orbitron', sans-serif;
-    background: radial-gradient(circle at top,#111,#000);
-    color:#fff;
-    text-align:center;
+:root {
+    --primary: #ff0055;
+    --secondary: #00f2ff;
+    --bg: #0a0a0c;
+    --card-bg: rgba(255, 255, 255, 0.05);
 }
 
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    padding:15px 30px;
-    background:#000;
-    border-bottom:1px solid red;
+body {
+    margin: 0;
+    font-family: 'Orbitron', 'Cairo', sans-serif;
+    background: var(--bg);
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 0, 85, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0, 242, 255, 0.1) 0%, transparent 40%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-align: center;
 }
 
-.lang-switch button{
-    background:black;
-    border:1px solid red;
-    color:red;
-    padding:5px 15px;
-    cursor:pointer;
-    margin-left:5px;
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.lang-switch button:hover{
-    background:red;
-    color:black;
+.lang-switch button {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 6px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
-.logo-container{
-    margin-top:40px;
+.lang-switch button:hover {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 15px var(--primary);
 }
 
-.logo-text{
-    font-size:40px;
-    color:#ff0033;
-    text-shadow:0 0 20px red,0 0 40px red;
+.logo-container {
+    padding: 50px 20px 20px;
 }
 
-.logo-sub{
-    font-size:14px;
-    letter-spacing:4px;
-    color:#00ffcc;
-    text-shadow:0 0 15px #00ffcc;
+.logo-text {
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 900;
+    background: linear-gradient(to right, var(--primary), #ff7eb3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-#crash{
-    font-size:42px;
-    margin:25px 0;
-    color:#00ffcc;
-    text-shadow:0 0 20px #00ffcc;
+#subLogo {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--secondary);
+    margin-top: 10px;
+    text-transform: uppercase;
 }
 
-.container{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    margin-top:40px;
-    flex-wrap:wrap;
+#crash {
+    font-size: 70px;
+    font-weight: bold;
+    margin: 30px 0;
+    color: var(--secondary);
 }
 
-.card{
-    background:#111;
-    padding:25px 40px;
-    border-radius:12px;
-    border:1px solid red;
-    cursor:pointer;
-    transition:0.3s;
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 10%;
 }
 
-.card:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 40px red;
+.card {
+    background: var(--card-bg);
+    padding: 25px 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    min-width: 150px;
 }
 
-.modal{
-    display:none;
-    position:fixed;
-    top:0;left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.9);
-    justify-content:center;
-    align-items:center;
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
 }
 
-.modal-content{
-    background:#111;
-    padding:30px;
-    border-radius:12px;
-    width:320px;
-    border:1px solid red;
+.modal-content {
+    background: #151518;
+    padding: 35px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 380px;
+    border: 1px solid var(--primary);
 }
 
-input{
-    width:100%;
-    padding:10px;
-    margin:15px 0;
-    background:#000;
-    border:1px solid red;
-    color:#fff;
+input {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #fff;
+    text-align: center;
 }
 
-button.action{
-    background:red;
-    border:none;
-    padding:10px 20px;
-    color:#fff;
-    cursor:pointer;
+button.action {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, var(--primary), #ff5500);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.close{
-    margin-top:15px;
-    cursor:pointer;
-    color:#aaa;
+.close-btn {
+    margin-top: 20px;
+    color: #888;
+    cursor: pointer;
 }
 
-.payment-box{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    margin-top:15px;
+.result-msg {
+    margin-top: 15px;
 }
 
-.pay-card{
-    background:#000;
-    padding:12px;
-    border:1px solid #00ffcc;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.3s;
+.telegram-contact {
+    margin: 50px 0;
 }
-
-.pay-card:hover{
-    background:#00ffcc;
-    color:black;
-    box-shadow:0 0 25px #00ffcc;
-}
-
-.telegram-contact{
-    margin:40px 0;
-    font-size:16px;
-}
-.telegram-contact a{
-    color:#00ffcc;
-    text-decoration:underline;
+.telegram-contact a {
+    color: var(--secondary);
 }
 </style>
 </head>
@@ -162,180 +167,134 @@ button.action{
 <body>
 
 <div class="topbar">
-    <div id="topTitle">crashV2.3 </div>
-    <div class="lang-switch">
-        <button onclick="setLang('en')">EN</button>
-        <button onclick="setLang('zh')">中文</button>
-    </div>
+<div style="font-weight:bold;color:var(--secondary)">crashV2.3</div>
+<div class="lang-switch">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('zh')">中文</button>
+</div>
 </div>
 
 <div class="logo-container">
-    <div class="logo-text">CRASH V2.3</div>
-    <div class="logo-sub" id="subLogo">EXPERIMENTAL ACCESS</div>
+<div class="logo-text">CRASH V2.3</div>
+<div id="subLogo">EXPERIMENTAL ACCESS</div>
 </div>
 
 <div id="crash">1.00x</div>
 
 <div class="container">
-    <div class="card" onclick="openModal('verify')" id="verifyBtn">Verify ID</div>
-    <div class="card" onclick="openModal('subscribe')" id="buyBtn">Buy Code</div>
-    <div class="card" onclick="openModal('download')" id="downloadBtn">Download App</div>
-    <div class="card" onclick="openModal('track')" id="trackBtn">Track Order</div>
-    <div class="card" onclick="openModal('play')" id="playBtn">Play</div>
+<div class="card" onclick="openModal('verify')" id="verifyBtn">Verify ID</div>
+<div class="card" onclick="openModal('subscribe')" id="buyBtn">Buy Code</div>
+<div class="card" onclick="openModal('download')" id="downloadBtn">Download App</div>
+<div class="card" onclick="openModal('track')" id="trackBtn">Track Order</div>
+<div class="card" onclick="openModal('play')" id="playBtn">Play</div>
 </div>
 
 <div class="modal" id="verify">
-    <div class="modal-content">
-        <h3 id="verifyTitle">Enter ID</h3>
-        <input type="text">
-        <button class="action" onclick="verifyID()" id="verifyAction">Verify</button>
-        <div class="close" onclick="closeModal()" id="close1">Close</div>
-    </div>
+<div class="modal-content">
+<h3>Enter ID</h3>
+<input type="text" id="verifyInput">
+<button class="action" onclick="verifyID()">Verify</button>
+<div class="close-btn" onclick="closeModal()">Close</div>
 </div>
-
-<div class="modal" id="subscribe">
-    <div class="modal-content">
-        <h3 id="subTitle">Subscription</h3>
-        <p id="subText1">1 Hour = 40 USD</p>
-        <p id="subText2">Each extra hour +40 USD</p>
-        <hr style="margin:20px 0;border:1px solid #ff0033;">
-        <h4 id="payTitle">Available Payment Methods</h4>
-        <div class="payment-box">
-            <div class="pay-card" onclick="openPayment('Binance')">Binance</div>
-            <div class="pay-card" onclick="openPayment('Trust Wallet')">Trust Wallet</div>
-            <div class="pay-card" onclick="openPayment('Visa')">Visa Card</div>
-        </div>
-        <div class="close" onclick="closeModal()" id="close2">Close</div>
-    </div>
-</div>
-
-<div class="modal" id="download">
-    <div class="modal-content">
-        <h3 id="downTitle">Download App</h3>
-        <p id="downText">App not available in your country ⚠️</p>
-        <div class="close" onclick="closeModal()" id="close3">Close</div>
-    </div>
 </div>
 
 <div class="modal" id="track">
-    <div class="modal-content">
-        <h3 id="trackTitle">Track Your Order</h3>
-        <input type="text" id="trackId" placeholder="Enter ID">
-        <input type="text" id="trackRef" placeholder="Enter Transaction ID">
-        <button class="action" onclick="trackOrder()" id="trackAction">OK</button>
-        <div style="margin-top:15px;font-size:14px;" id="trackMessage"></div>
-        <div class="close" onclick="closeModal()" id="close4">Close</div>
-    </div>
+<div class="modal-content">
+<h3>Track Your Order</h3>
+<input type="text" id="trackId">
+<input type="text" id="trackRef">
+<button class="action" onclick="trackOrder()">OK</button>
+<div id="trackMessage" class="result-msg"></div>
+<div class="close-btn" onclick="closeModal()">Close</div>
+</div>
 </div>
 
 <div class="modal" id="play">
-    <div class="modal-content">
-        <h3>Enter ID & Code</h3>
-        <input type="text" id="playId" placeholder="Enter ID">
-        <input type="text" id="playCode" placeholder="Enter Code">
-        <button class="action" onclick="playGame()">Start</button>
-        <div style="margin-top:15px;font-size:14px;" id="playMessage"></div>
-        <div class="close" onclick="closeModal()">Close</div>
-    </div>
+<div class="modal-content">
+<h3>Enter ID & Code</h3>
+<input type="text" id="playId">
+<input type="text" id="playCode">
+<button class="action" onclick="playGame()">Start</button>
+<div id="playMessage" class="result-msg"></div>
+<div class="close-btn" onclick="closeModal()">Close</div>
+</div>
 </div>
 
 <div class="telegram-contact">
-    <p>Contact Developer on Telegram:</p>
-    <a href="https://t.me/jinesomsn" target="_blank">@jinesomsn</a>
+<p>Contact Developer on Telegram:</p>
+<a href="https://t.me/jinesomsn" target="_blank">@jinesomsn</a>
 </div>
 
 <script>
 
-let currentLang="en";
+let value = 1.00;
 
-let value=1.00;
 setInterval(()=>{
-    value+=0.01;
-    if(value>(Math.random()*5+2)){ value=1.00; }
-    document.getElementById("crash").innerText=value.toFixed(2)+"x";
+value+=0.01;
+if(value>3){value=1;}
+document.getElementById("crash").innerText=value.toFixed(2)+"x";
 },100);
 
-function setLang(lang){
-    currentLang=lang;
-
-    if(lang==="en"){
-        document.getElementById("subLogo").innerText="EXPERIMENTAL ACCESS";
-        document.getElementById("verifyBtn").innerText="Verify ID";
-        document.getElementById("buyBtn").innerText="Buy Code";
-        document.getElementById("downloadBtn").innerText="Download App";
-        document.getElementById("trackBtn").innerText="Track Order";
-        document.getElementById("trackTitle").innerText="Track Your Order";
-    }else{
-        document.getElementById("subLogo").innerText="实验访问";
-        document.getElementById("verifyBtn").innerText="验证ID";
-        document.getElementById("buyBtn").innerText="购买代码";
-        document.getElementById("downloadBtn").innerText="下载应用";
-        document.getElementById("trackBtn").innerText="订单跟踪";
-        document.getElementById("trackTitle").innerText="跟踪您的订单";
-    }
-}
-
 function openModal(id){
-    document.getElementById(id).style.display="flex";
+document.getElementById(id).style.display="flex";
 }
 
 function closeModal(){
-    document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
+document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
 }
 
 function verifyID(){
-    const input = document.querySelector("#verify input").value;
-    if(input === "1174328239"){
-        alert("Your ID is valid ✅");
-    }else{
-        alert("Your ID is currently invalid because it has not been used for an extended period. Please contact support for further assistance.");
-    }
+
+const input=document.getElementById("verifyInput").value.trim();
+
+if(input==="1174328239"){
+alert("Your ID is valid ✅");
+}else{
+alert("Your ID is currently invalid because it has not been used for an extended period.");
+}
+
 }
 
 function trackOrder(){
-    const id = document.getElementById("trackId").value;
-    const ref = document.getElementById("trackRef").value;
-    const messageBox = document.getElementById("trackMessage");
 
-    if(id === "1174328239" && ref === "CH13890"){
-        messageBox.innerHTML =
-        "<span style='color:#00ffcc'>Payment completed successfully ✅</span><br><br>" +
-        "Your access code is:<br><b style='color:#00ffcc;font-size:18px'>#A167289292</b><br><br>" +
-        "<small style='color:#aaa'>⚠️ This code is valid for 1 hour only.<br>It must be used before March 7.</small>";
-    }else{
-        messageBox.innerHTML =
-        "<span style='color:red'>The provided information is incorrect. Please verify your details and try again.</span>";
-    }
+const id=document.getElementById("trackId").value.trim();
+const ref=document.getElementById("trackRef").value.trim();
+const messageBox=document.getElementById("trackMessage");
+
+if(id==="1174328239" && ref==="CH13890"){
+
+messageBox.innerHTML=
+"Payment completed successfully ✅<br><br>"+
+"Your access code:<br><b>#A167289292</b><br><br>"+
+"⚠️ This code is valid for 1 hour only.<br>Use before March 7.";
+
+}else{
+
+messageBox.innerHTML="Invalid information";
+
+}
+
 }
 
 function playGame(){
 
-    const id = document.getElementById("playId").value;
-    const code = document.getElementById("playCode").value;
-    const message = document.getElementById("playMessage");
+const id=document.getElementById("playId").value.trim();
+const code=document.getElementById("playCode").value.trim();
+const message=document.getElementById("playMessage");
 
-    if(id === "1174328239" && code === "#A167289292"){
-        message.innerHTML =
-        "<span style='color:red'>This ID has already been used.</span>";
-    }else{
-        message.innerHTML =
-        "<span style='color:red'>Invalid ID or Code.</span>";
-    }
+if(id==="1174328239" && code==="#A167289292"){
+
+message.innerHTML="This ID has already been used.";
+
+}else{
+
+message.innerHTML="Invalid ID or Code.";
 
 }
 
-function openPayment(method){
-    let url="";
-    switch(method){
-        case "Binance": url="https://www.binance.com/"; break;
-        case "Trust Wallet": url="https://trustwallet.com/"; break;
-        case "Visa": url="https://www.visa.com/"; break;
-    }
-    window.open(url,"_blank");
 }
 
 </script>
 
 </body>
 </html>
-
