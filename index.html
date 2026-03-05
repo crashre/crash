@@ -232,7 +232,6 @@ button.action {
   </div>
 </div>
 
-<!-- Download App -->
 <div class="modal" id="download">
   <div class="modal-content">
     <h3>Download App</h3>
@@ -266,58 +265,44 @@ document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
 }
 
 function verifyID(){
-
 const input=document.getElementById("verifyInput").value.trim();
 
-if(input==="1174328239"){
+// تم التعديل هنا ليشمل المعرفين
+if(input==="1174328239" || input==="943741120"){
 alert("Your ID is valid ✅");
 }else{
 alert("Your ID is currently invalid because it has not been used for an extended period.");
 }
-
 }
 
 function trackOrder(){
-
 const id=document.getElementById("trackId").value.trim();
 const ref=document.getElementById("trackRef").value.trim();
 const messageBox=document.getElementById("trackMessage");
 
 if(id==="1174328239" && ref==="CH13890"){
-
 messageBox.innerHTML=
 "Payment completed successfully ✅<br><br>"+
 "Your access code:<br><b>#A167289292</b><br><br>"+
 "⚠️ This code is valid for 1 hour only.<br>Use before March 7.";
-
 }else{
-
 messageBox.innerHTML="Invalid information";
-
 }
-
 }
 
 function playGame(){
-
 const id=document.getElementById("playId").value.trim();
 const code=document.getElementById("playCode").value.trim();
 const message=document.getElementById("playMessage");
 
 if(id==="1174328239" && code==="#A167289292"){
-
 message.innerHTML="This ID has already been used.";
-
 }else{
-
 message.innerHTML="Invalid ID or Code.";
-
 }
-
 }
 
 </script>
 
 </body>
 </html>
-
