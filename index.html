@@ -13,6 +13,7 @@
     --secondary: #00f2ff;
     --bg: #0a0a0c;
     --card-bg: rgba(255, 255, 255, 0.05);
+    --accent: #ffae00;
 }
 
 body {
@@ -28,139 +29,50 @@ body {
     text-align: center;
 }
 
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.5); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100; }
+.lang-switch button { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 6px 15px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-weight: bold; margin-left: 5px; }
+.lang-switch button:hover { background: var(--primary); color: #fff; }
 
-.lang-switch button {
-    background: transparent;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    padding: 6px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
-    margin-left: 5px;
-}
+.logo-container { padding: 50px 20px 20px; }
+.logo-text { font-size: clamp(40px, 8vw, 70px); font-weight: 900; background: linear-gradient(to right, var(--primary), #ff7eb3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+#subLogo { font-size: 14px; letter-spacing: 4px; color: var(--secondary); margin-top: 10px; text-transform: uppercase; }
 
-.lang-switch button:hover {
-    background: var(--primary);
-    color: #fff;
-    box-shadow: 0 0 15px var(--primary);
-}
+#crash { font-size: 70px; font-weight: bold; margin: 30px 0; color: var(--secondary); text-shadow: 0 0 20px var(--secondary); }
+.container { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 20px 10%; }
+.card { background: var(--card-bg); padding: 25px 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-size: 15px; font-weight: bold; min-width: 150px; transition: 0.3s; }
 
-.logo-container {
-    padding: 50px 20px 20px;
-}
-
-.logo-text {
-    font-size: clamp(40px, 8vw, 70px);
-    font-weight: 900;
-    background: linear-gradient(to right, var(--primary), #ff7eb3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#subLogo {
-    font-size: 14px;
-    letter-spacing: 4px;
-    color: var(--secondary);
-    margin-top: 10px;
-    text-transform: uppercase;
-}
-
-#crash {
-    font-size: 70px;
-    font-weight: bold;
-    margin: 30px 0;
-    color: var(--secondary);
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px 10%;
-}
-
-.card {
-    background: var(--card-bg);
-    padding: 25px 30px;
-    border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.1);
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-    min-width: 150px;
-}
-
-.modal {
+#rulesSection {
     display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: #151518;
-    padding: 35px;
-    border-radius: 30px;
-    width: 90%;
-    max-width: 380px;
+    background: rgba(0, 0, 0, 0.8);
     border: 1px solid var(--primary);
+    margin: 20px auto;
+    padding: 25px;
+    width: 85%;
+    max-width: 550px;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
 }
+#rulesSection h4 { color: var(--primary); margin: 0 0 15px 0; font-size: 1.2rem; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; }
+#rulesSection ul { list-style: none; padding: 0; margin: 0; }
+#rulesSection li { margin-bottom: 12px; font-size: 0.85rem; line-height: 1.5; color: #eee; position: relative; padding-left: 25px; }
+#rulesSection li::before { content: "➤"; position: absolute; left: 0; color: var(--primary); font-size: 10px; top: 3px; }
 
-input {
-    width: 100%;
-    padding: 15px;
-    margin: 12px 0;
-    background: #000;
-    border: 1px solid #333;
-    border-radius: 12px;
-    color: #fff;
-    text-align: center;
-}
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; }
+.modal-content { background: #151518; padding: 35px; border-radius: 30px; width: 90%; max-width: 380px; border: 1px solid var(--primary); }
+input { width: 100%; padding: 15px; margin: 12px 0; background: #000; border: 1px solid #333; border-radius: 12px; color: #fff; text-align: center; box-sizing: border-box; font-family: 'Orbitron', sans-serif; }
+button.action { width: 100%; padding: 15px; background: linear-gradient(45deg, var(--primary), #ff5500); border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer; font-family: 'Orbitron', sans-serif; }
 
-button.action {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(45deg, var(--primary), #ff5500);
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
+#predictionScreen { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 300; flex-direction: column; align-items: center; justify-content: center; }
+.user-badge { position: absolute; top: 20px; left: 20px; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--secondary); padding: 10px 20px; border-radius: 50px; color: var(--secondary); font-size: 0.8rem; }
+.timer-box { font-size: 1.1rem; color: var(--accent); margin-bottom: 25px; border: 1px solid var(--accent); padding: 8px 25px; border-radius: 12px; background: rgba(255, 174, 0, 0.05); }
+.prediction-display { width: 260px; height: 260px; border: 5px solid var(--primary); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(255, 0, 85, 0.4); }
+.pred-value { font-size: 3.8rem; font-weight: 900; color: #fff; margin: 10px 0; }
+.pred-label { font-size: 0.8rem; letter-spacing: 4px; color: var(--secondary); font-weight: bold; }
 
-.close-btn {
-    margin-top: 20px;
-    color: #888;
-    cursor: pointer;
-}
-
-.result-msg {
-    margin-top: 15px;
-}
-
-.telegram-contact {
-    margin: 50px 0;
-}
-.telegram-contact a {
-    color: var(--secondary);
-}
+.telegram-contact { margin: 50px 0; }
+.telegram-contact a { color: var(--secondary); text-decoration: none; font-weight: bold; }
+.close-btn { margin-top: 20px; color: #888; cursor: pointer; font-size: 14px; text-decoration: underline; }
 </style>
 </head>
 
@@ -169,141 +81,208 @@ button.action {
 <div class="topbar">
 <div style="font-weight:bold;color:var(--secondary)">crashV2.3</div>
 <div class="lang-switch">
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('zh')">中文</button>
+<button onclick="toggleEnglish()">EN</button>
+<button onclick="setLangZh()">中文</button>
 </div>
 </div>
 
 <div class="logo-container">
-<div class="logo-text">CRASH V2.3</div>
+<div class="logo-text" id="mainLogo">CRASH V2.3</div>
 <div id="subLogo">EXPERIMENTAL ACCESS</div>
+</div>
+
+<div id="rulesSection">
+    <h4>Platform Rules & Regulations</h4>
+    <ul>
+        <li>No refunds will be issued if you fail to play within the specified time.</li>
+        <li>Only one access code can be purchased per ID.</li>
+        <li>Using a VPN set to China is mandatory to operate the website.</li>
+        <li>No refunds after purchasing the code, even if it remains unused.</li>
+        <li>Do not activate the code on an invalid or previously used ID, as it will be terminated immediately.</li>
+    </ul>
 </div>
 
 <div id="crash">1.00x</div>
 
 <div class="container">
-<div class="card" onclick="openModal('verify')" id="verifyBtn">Verify ID</div>
-<div class="card" onclick="openModal('subscribe')" id="buyBtn">Buy Code</div>
-<div class="card" onclick="openModal('download')" id="downloadBtn">Download App</div>
-<div class="card" onclick="openModal('track')" id="trackBtn">Track Order</div>
-<div class="card" onclick="openModal('play')" id="playBtn">Play</div>
+<div class="card" onclick="openModal('verify')">Verify ID</div>
+<div class="card" onclick="openModal('subscribe')">Buy Code</div>
+<div class="card" onclick="openModal('download')">Download App</div>
+<div class="card" onclick="openModal('track')">Track Order</div>
+<div class="card" onclick="openModal('play')">Play</div>
 </div>
 
 <div class="modal" id="verify">
 <div class="modal-content">
-<h3>Enter ID</h3>
-<input type="text" id="verifyInput">
-<button class="action" onclick="verifyID()">Verify</button>
+<h3>Verify Account</h3>
+<input type="text" id="verifyInput" placeholder="Enter ID">
+<button class="action" onclick="verifyID()">CHECK STATUS</button>
 <div class="close-btn" onclick="closeModal()">Close</div>
 </div>
 </div>
 
 <div class="modal" id="track">
 <div class="modal-content">
-<h3>Track Your Order</h3>
-<input type="text" id="trackId">
-<input type="text" id="trackRef">
-<button class="action" onclick="trackOrder()">OK</button>
-<div id="trackMessage" class="result-msg"></div>
+<h3>Track Order</h3>
+<input type="text" id="trackId" placeholder="User ID">
+<input type="text" id="trackRef" placeholder="Reference No.">
+<button class="action" onclick="trackOrder()">GET CODE</button>
+<div id="trackMessage" style="margin-top:15px; font-size:13px;"></div>
 <div class="close-btn" onclick="closeModal()">Close</div>
 </div>
 </div>
 
 <div class="modal" id="play">
 <div class="modal-content">
-<h3>Enter ID & Code</h3>
-<input type="text" id="playId">
-<input type="text" id="playCode">
-<button class="action" onclick="playGame()">Start</button>
-<div id="playMessage" class="result-msg"></div>
+<h3>Connect Terminal</h3>
+<input type="text" id="playId" placeholder="User ID">
+<input type="text" id="playCode" placeholder="Access Code">
+<button class="action" onclick="playGame()">START SESSION</button>
+<div id="playMessage" style="margin-top:15px; color:#ff0055; font-size:13px; font-weight:bold;"></div>
 <div class="close-btn" onclick="closeModal()">Close</div>
 </div>
 </div>
+
 <div class="modal" id="subscribe">
-  <div class="modal-content">
-    <h3>Payment Information</h3>
-    <p>Price per hour: <b>60 USDT</b></p>
-    <p>Send payment to:</p>
-    <p><b>USDT (TRC20)</b></p>
-    <p>Wallet Address:</p>
-    <p style="word-break:break-all;">TX8F7J8K3M9P2X</p>
-    <p>After payment contact the developer.</p>
-    <div class="close-btn" onclick="closeModal()">Close</div>
-  </div>
+<div class="modal-content">
+<h3>Payment Info</h3>
+<p>Price: 60 USDT (TRC20)</p>
+<p>Address: TX8F7J8K3M9P2X</p>
+<div class="close-btn" onclick="closeModal()">Close</div>
+</div>
 </div>
 
 <div class="modal" id="download">
-  <div class="modal-content">
-    <h3>Download App</h3>
-    <p>This application is currently not available in your country.</p>
-    <p>Please contact the developer for access.</p>
-    <div class="close-btn" onclick="closeModal()">Close</div>
-  </div>
+<div class="modal-content">
+<h3>Download</h3>
+<p>Service restricted in your region.</p>
+<p>Contact Support for bypass.</p>
+<div class="close-btn" onclick="closeModal()">Close</div>
+</div>
+</div>
+
+<div id="predictionScreen">
+    <div class="user-badge" id="displayUser">ID: 00000000</div>
+    <div class="timer-box" id="timer">Session Ends: 20:00</div>
+    <div class="prediction-display">
+        <div class="pred-label">TARGET CRASH</div>
+        <div class="pred-value" id="predValue">--.--</div>
+        <div class="pred-label">PROBABILITY</div>
+    </div>
+    <button class="action" style="width:240px; margin-top:40px;" onclick="generatePrediction()">GENERATE NEXT SIGNAL</button>
+    <div class="close-btn" onclick="logoutPrediction()" style="color:#fff; text-decoration:none; border:1px solid #444; padding:5px 15px; border-radius:5px; margin-top:30px;">Logout Terminal</div>
 </div>
 
 <div class="telegram-contact">
-<p>Contact Developer on Telegram:</p>
-<a href="https://t.me/jinesomsn" target="_blank">@jinesomsn</a>
+<p>Support: <a href="https://t.me/jinesomsn" target="_blank">@jinesomsn</a></p>
 </div>
 
 <script>
-
 let value = 1.00;
-
-setInterval(()=>{
-value+=0.01;
-if(value>3){value=1;}
-document.getElementById("crash").innerText=value.toFixed(2)+"x";
+let crashInterval = setInterval(()=>{
+    value+=0.01;
+    if(value>3.00){value=1.00;}
+    document.getElementById("crash").innerText=value.toFixed(2)+"x";
 },100);
 
 function openModal(id){
-document.getElementById(id).style.display="flex";
+    document.getElementById(id).style.display="flex";
+    if(id==='play') document.getElementById("playMessage").innerText = "";
 }
 
 function closeModal(){
-document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
+    document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
+}
+
+let isEnglish = false;
+function toggleEnglish() {
+    const rules = document.getElementById('rulesSection');
+    const mainLogo = document.getElementById('mainLogo');
+    if(!isEnglish) {
+        rules.style.display = "block";
+        mainLogo.innerText = "CRASH V2.3 PRO";
+        isEnglish = true;
+    } else {
+        rules.style.display = "none";
+        mainLogo.innerText = "CRASH V2.3";
+        isEnglish = false;
+    }
+}
+
+function setLangZh() {
+    document.getElementById('rulesSection').style.display = "none";
+    document.getElementById('mainLogo').innerText = "CRASH V2.3";
+    isEnglish = false;
 }
 
 function verifyID(){
-const input=document.getElementById("verifyInput").value.trim();
-
-// تم التعديل هنا ليشمل المعرفين
-if(input==="1174328239" || input==="943741120"){
-alert("Your ID is valid ✅");
-}else{
-alert("Your ID is currently invalid because it has not been used for an extended period.");
-}
+    const input = document.getElementById("verifyInput").value.trim();
+    if(input === "1174328239" || input === "943741120"){
+        alert("Your ID is valid ✅");
+    } else {
+        alert("Your ID is currently invalid or expired.");
+    }
 }
 
 function trackOrder(){
-const id=document.getElementById("trackId").value.trim();
-const ref=document.getElementById("trackRef").value.trim();
-const messageBox=document.getElementById("trackMessage");
-
-if(id==="1174328239" && ref==="CH13890"){
-messageBox.innerHTML=
-"Payment completed successfully ✅<br><br>"+
-"Your access code:<br><b>#A167289292</b><br><br>"+
-"⚠️ This code is valid for 1 hour only.<br>Use before March 7.";
-}else{
-messageBox.innerHTML="Invalid information";
-}
+    const id = document.getElementById("trackId").value.trim();
+    const ref = document.getElementById("trackRef").value.trim();
+    const msg = document.getElementById("trackMessage");
+    if((id === "1174328239" || id === "943741120") && ref === "CH13890"){
+        msg.innerHTML = "Success! Code: <b style='color:var(--secondary)'>#A67289292</b>";
+    } else {
+        msg.innerHTML = "Invalid ID or Reference.";
+    }
 }
 
 function playGame(){
-const id=document.getElementById("playId").value.trim();
-const code=document.getElementById("playCode").value.trim();
-const message=document.getElementById("playMessage");
+    const id = document.getElementById("playId").value.trim();
+    const code = document.getElementById("playCode").value.trim();
+    const msg = document.getElementById("playMessage");
 
-if(id==="1174328239" && code==="#A167289292"){
-message.innerHTML="You will be able to log in again at 17:00 GMT.";
-}else{
-message.innerHTML="Invalid ID or Code.";
-}
+    if((id === "1174328239" || id === "943741120") && code === "#A67289292"){
+        document.getElementById("predictionScreen").style.display = "flex";
+        document.getElementById("displayUser").innerText = "ACTIVE ID: " + id;
+        startTimer(20 * 60);
+        msg.innerText = ""; 
+    } else {
+        msg.innerText = "Invalid ID or Code.";
+    }
 }
 
+let sessionTimer;
+function startTimer(duration) {
+    let timer = duration, minutes, seconds;
+    const display = document.getElementById('timer');
+    if(sessionTimer) clearInterval(sessionTimer);
+    sessionTimer = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = "Session Ends: " + minutes + ":" + seconds;
+        if (--timer < 0) logoutPrediction();
+    }, 1000);
+}
+
+function logoutPrediction() {
+    document.getElementById("predictionScreen").style.display = "none";
+    if(sessionTimer) clearInterval(sessionTimer);
+    document.getElementById("playId").value = "";
+    document.getElementById("playCode").value = "";
+}
+
+function generatePrediction(){
+    const p = document.getElementById("predValue");
+    p.innerText = "ANALYZING";
+    p.style.fontSize = "1.2rem";
+    setTimeout(() => {
+        const result = (Math.random() * (12.0 - 1.2) + 1.2).toFixed(2);
+        p.innerText = result + "x";
+        p.style.fontSize = "3.8rem";
+    }, 1200);
+}
 </script>
 
 </body>
 </html>
-
