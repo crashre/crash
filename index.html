@@ -27,6 +27,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     text-align: center;
+    padding-bottom: 60px; /* مساحة إضافية للشريط المتحرك */
 }
 
 .topbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.5); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100; }
@@ -73,6 +74,46 @@ button.action { width: 100%; padding: 15px; background: linear-gradient(45deg, v
 .telegram-contact { margin: 50px 0; }
 .telegram-contact a { color: var(--secondary); text-decoration: none; font-weight: bold; }
 .close-btn { margin-top: 20px; color: #888; cursor: pointer; font-size: 14px; text-decoration: underline; }
+
+/* الشريط الإخباري المتحرك */
+.news-ticker {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 2px solid var(--primary);
+    color: var(--secondary);
+    padding: 10px 0;
+    z-index: 999;
+    overflow: hidden;
+    white-space: nowrap;
+    backdrop-filter: blur(5px);
+}
+
+.ticker-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 15s linear infinite;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* توهج للشريط */
+.news-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    box-shadow: inset 0 0 15px rgba(255, 0, 85, 0.4);
+    pointer-events: none;
+}
 </style>
 </head>
 
@@ -176,6 +217,12 @@ button.action { width: 100%; padding: 15px; background: linear-gradient(45deg, v
 
 <div class="telegram-contact">
 <p>Support: <a href="https://t.me/jinsomniac" target="_blank">@jinsomniac</a></p>
+</div>
+
+<div class="news-ticker">
+    <div class="ticker-content">
+        Attention: The subscription price has been increased. Update your balance accordingly. &nbsp;&nbsp;&nbsp;&nbsp; ★ &nbsp;&nbsp;&nbsp;&nbsp; Alert: The subscription price has been increased. Secure your slot now!
+    </div>
 </div>
 
 <script>
@@ -287,7 +334,3 @@ function generatePrediction(){
 
 </body>
 </html>
-
-
-
-
