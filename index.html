@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CrashV2.3 - Pro Edition</title>
+<title>CrashV2.4 - Pro Edition</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
@@ -27,20 +27,45 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     text-align: center;
-    padding-bottom: 60px; /* مساحة إضافية للشريط المتحرك */
+    padding-bottom: 20px;
 }
 
 .topbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.5); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100; }
-.lang-switch button { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 6px 15px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-weight: bold; margin-left: 5px; }
-.lang-switch button:hover { background: var(--primary); color: #fff; }
+.lang-switch button { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 6px 15px; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: bold; margin-left: 5px; }
+.lang-switch button:hover { background: var(--primary); color: #fff; box-shadow: 0 0 15px var(--primary); transform: translateY(-2px); }
+.lang-switch button:active { transform: scale(0.9); }
 
 .logo-container { padding: 50px 20px 20px; }
-.logo-text { font-size: clamp(40px, 8vw, 70px); font-weight: 900; background: linear-gradient(to right, var(--primary), #ff7eb3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.logo-text { font-size: clamp(40px, 8vw, 70px); font-weight: 900; background: linear-gradient(to right, var(--primary), #ff7eb3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(255, 0, 85, 0.3); }
 #subLogo { font-size: 14px; letter-spacing: 4px; color: var(--secondary); margin-top: 10px; text-transform: uppercase; }
 
 #crash { font-size: 70px; font-weight: bold; margin: 30px 0; color: var(--secondary); text-shadow: 0 0 20px var(--secondary); }
 .container { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 20px 10%; }
-.card { background: var(--card-bg); padding: 25px 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; font-size: 15px; font-weight: bold; min-width: 150px; transition: 0.3s; }
+
+/* تأثيرات البطاقات العصرية */
+.card { 
+    background: var(--card-bg); 
+    padding: 25px 30px; 
+    border-radius: 24px; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    cursor: pointer; 
+    font-size: 15px; 
+    font-weight: bold; 
+    min-width: 150px; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    position: relative;
+    overflow: hidden;
+}
+.card:hover { 
+    border-color: var(--primary); 
+    box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3), inset 0 0 15px rgba(255, 0, 85, 0.1); 
+    transform: translateY(-5px) scale(1.03); 
+    color: var(--secondary);
+}
+.card:active { 
+    transform: translateY(2px) scale(0.95); 
+    box-shadow: 0 5px 10px rgba(255, 0, 85, 0.4); 
+}
 
 #rulesSection {
     display: none;
@@ -59,21 +84,66 @@ body {
 #rulesSection li { margin-bottom: 12px; font-size: 0.85rem; line-height: 1.5; color: #eee; position: relative; padding-left: 25px; }
 #rulesSection li::before { content: "➤"; position: absolute; left: 0; color: var(--primary); font-size: 10px; top: 3px; }
 
-.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; }
-.modal-content { background: #151518; padding: 35px; border-radius: 30px; width: 90%; max-width: 380px; border: 1px solid var(--primary); }
-input { width: 100%; padding: 15px; margin: 12px 0; background: #000; border: 1px solid #333; border-radius: 12px; color: #fff; text-align: center; box-sizing: border-box; font-family: 'Orbitron', sans-serif; }
-button.action { width: 100%; padding: 15px; background: linear-gradient(45deg, var(--primary), #ff5500); border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer; font-family: 'Orbitron', sans-serif; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 200; backdrop-filter: blur(5px); }
+.modal-content { background: #151518; padding: 35px; border-radius: 30px; width: 90%; max-width: 380px; border: 1px solid var(--primary); box-shadow: 0 0 40px rgba(255, 0, 85, 0.2); transform: scale(0.9); animation: modalOpen 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+@keyframes modalOpen {
+    to { transform: scale(1); }
+}
+
+input { width: 100%; padding: 15px; margin: 12px 0; background: #000; border: 1px solid #333; border-radius: 12px; color: #fff; text-align: center; box-sizing: border-box; font-family: 'Orbitron', sans-serif; transition: 0.3s; }
+input:focus { border-color: var(--secondary); outline: none; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+
+/* تأثيرات أزرار الأكشن */
+button.action { 
+    width: 100%; 
+    padding: 15px; 
+    background: linear-gradient(45deg, var(--primary), #ff5500); 
+    border: none; 
+    border-radius: 12px; 
+    color: white; 
+    font-weight: bold; 
+    cursor: pointer; 
+    font-family: 'Orbitron', sans-serif; 
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+button.action:hover { 
+    box-shadow: 0 0 25px var(--primary); 
+    transform: translateY(-2px); 
+}
+button.action:active { 
+    transform: scale(0.96); 
+    box-shadow: 0 0 10px var(--primary); 
+}
 
 #predictionScreen { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 300; flex-direction: column; align-items: center; justify-content: center; }
-.user-badge { position: absolute; top: 20px; left: 20px; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--secondary); padding: 10px 20px; border-radius: 50px; color: var(--secondary); font-size: 0.8rem; }
-.timer-box { font-size: 1.1rem; color: var(--accent); margin-bottom: 25px; border: 1px solid var(--accent); padding: 8px 25px; border-radius: 12px; background: rgba(255, 174, 0, 0.05); }
-.prediction-display { width: 260px; height: 260px; border: 5px solid var(--primary); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(255, 0, 85, 0.4); }
-.pred-value { font-size: 3.8rem; font-weight: 900; color: #fff; margin: 10px 0; }
+.user-badge { position: absolute; top: 20px; left: 20px; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--secondary); padding: 10px 20px; border-radius: 50px; color: var(--secondary); font-size: 0.8rem; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+.timer-box { font-size: 1.1rem; color: var(--accent); margin-bottom: 25px; border: 1px solid var(--accent); padding: 8px 25px; border-radius: 12px; background: rgba(255, 174, 0, 0.05); box-shadow: 0 0 15px rgba(255, 174, 0, 0.2); }
+.prediction-display { width: 260px; height: 260px; border: 5px solid var(--primary); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(255, 0, 85, 0.4); position: relative; }
+.prediction-display::before { content: ''; position: absolute; inset: -10px; border-radius: 50%; border: 2px dashed var(--secondary); animation: spin 10s linear infinite; opacity: 0.5; }
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.pred-value { font-size: 3.8rem; font-weight: 900; color: #fff; margin: 10px 0; text-shadow: 0 0 20px rgba(255,255,255,0.5); transition: 0.3s; }
 .pred-label { font-size: 0.8rem; letter-spacing: 4px; color: var(--secondary); font-weight: bold; }
 
-.telegram-contact { margin: 50px 0; }
-.telegram-contact a { color: var(--secondary); text-decoration: none; font-weight: bold; }
-.close-btn { margin-top: 20px; color: #888; cursor: pointer; font-size: 14px; text-decoration: underline; }
+.telegram-contact { margin: 40px 0 10px; }
+.telegram-contact a { color: var(--secondary); text-decoration: none; font-weight: bold; transition: 0.3s; }
+.telegram-contact a:hover { text-shadow: 0 0 10px var(--secondary); }
+
+.close-btn { margin-top: 20px; color: #888; cursor: pointer; font-size: 14px; text-decoration: underline; transition: 0.3s; }
+.close-btn:hover { color: #fff; }
+
+/* حقوق النشر */
+.copyright {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    margin-bottom: 70px; /* لإبقاء مسافة فوق الشريط المتحرك */
+    font-family: 'Orbitron', sans-serif;
+}
 
 /* الشريط الإخباري المتحرك */
 .news-ticker {
@@ -106,7 +176,6 @@ button.action { width: 100%; padding: 15px; background: linear-gradient(45deg, v
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* توهج للشريط */
 .news-ticker::after {
     content: '';
     position: absolute;
@@ -120,7 +189,7 @@ button.action { width: 100%; padding: 15px; background: linear-gradient(45deg, v
 <body>
 
 <div class="topbar">
-<div style="font-weight:bold;color:var(--secondary)">crashV2.3</div>
+<div style="font-weight:bold;color:var(--secondary)">crashV2.4</div>
 <div class="lang-switch">
 <button onclick="toggleEnglish()">EN</button>
 <button onclick="setLangZh()">中文</button>
@@ -219,6 +288,10 @@ button.action { width: 100%; padding: 15px; background: linear-gradient(45deg, v
 <p>Support: <a href="https://t.me/jinsomniac" target="_blank">@jinsomniac</a></p>
 </div>
 
+<div class="copyright">
+    All rights reserved &copy; 2026
+</div>
+
 <div class="news-ticker">
     <div class="ticker-content">
         Attention: The subscription price has been increased. Update your balance accordingly. &nbsp;&nbsp;&nbsp;&nbsp; ★ &nbsp;&nbsp;&nbsp;&nbsp; Alert: The subscription price has been increased. Secure your slot now!
@@ -248,11 +321,11 @@ function toggleEnglish() {
     const mainLogo = document.getElementById('mainLogo');
     if(!isEnglish) {
         rules.style.display = "block";
-        mainLogo.innerText = "CRASH V2.3 PRO";
+        mainLogo.innerText = "CRASH V2.4 PRO";
         isEnglish = true;
     } else {
         rules.style.display = "none";
-        mainLogo.innerText = "CRASH V2.3";
+        mainLogo.innerText = "CRASH V2.4";
         isEnglish = false;
     }
 }
