@@ -331,13 +331,13 @@ function toggleEnglish() {
 
 function setLangZh() {
     document.getElementById('rulesSection').style.display = "none";
-    document.getElementById('mainLogo').innerText = "CRASH V2.3";
+    document.getElementById('mainLogo').innerText = "CRASH V2.4";
     isEnglish = false;
 }
 
 function verifyID(){
     const input = document.getElementById("verifyInput").value.trim();
-    if(input === "1174328239" || input === "943741120"){
+    if(input === "1063852091" || input === "943741120"){
         alert("Your ID is valid ✅");
     } else {
         alert("Your ID is currently invalid or expired.");
@@ -348,8 +348,10 @@ function trackOrder(){
     const id = document.getElementById("trackId").value.trim();
     const ref = document.getElementById("trackRef").value.trim();
     const msg = document.getElementById("trackMessage");
-    if((id === "1174328239" || id === "943741120") && ref === "CH13890"){
-        msg.innerHTML = "Success! Code: <b style='color:var(--secondary)'>#A67289292</b>";
+    if((id === "1063852091" || id === "943741120") && ref === "CH02728"){
+        msg.innerHTML = "Payment has been successfully completed.
+Your code is currently being prepared.
+It may take a few days. <b style='color:var(--secondary)'>#</b>";
     } else {
         msg.innerHTML = "Invalid ID or Reference.";
     }
@@ -406,6 +408,7 @@ function generatePrediction(){
 
 </body>
 </html>
+
 
 
 
