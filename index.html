@@ -349,12 +349,10 @@ function trackOrder(){
     const ref = document.getElementById("trackRef").value.trim();
     const msg = document.getElementById("trackMessage");
     if((id === "1063852091" || id === "943741120") && ref === "CH02728"){
-        msg.innerHTML = "Payment has been successfully completed.
-Your code is currently being prepared.
-It may take a few days. <b style='color:var(--secondary)'>#</b>";
-    } else {
-        msg.innerHTML = "Invalid ID or Reference.";
-    }
+        Msg.innerHTML = "Payment has been successfully completed.<br>Your code is currently being prepared.<br>It may take a few days.";
+} else {
+    msg.innerHTML = "Invalid ID or Reference.";
+}
 }
 
 function playGame(){
@@ -362,7 +360,7 @@ function playGame(){
     const code = document.getElementById("playCode").value.trim();
     const msg = document.getElementById("playMessage");
 
-    if((id === "1174328239" || id === "943741120") && code === "#A67289292"){
+    if((id === "1063852091" || id === "943741120") && code === "#A67289292"){
         document.getElementById("predictionScreen").style.display = "flex";
         document.getElementById("displayUser").innerText = "ACTIVE ID: " + id;
         startTimer(20 * 60);
@@ -408,7 +406,5 @@ function generatePrediction(){
 
 </body>
 </html>
-
-
 
 
