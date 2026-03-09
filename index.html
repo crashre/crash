@@ -347,12 +347,16 @@ function verifyID(){
 function trackOrder(){
     const id = document.getElementById("trackId").value.trim();
     const ref = document.getElementById("trackRef").value.trim();
-    const msg = document.getElementById("trackMessage");
+    const msg = document.getElementById("trackMessage"); // lowercase
+
+    // Fix: Changed 'Msg' to 'msg' to match the variable definition
     if((id === "1063852091" || id === "943741120") && ref === "CH02728"){
-        Msg.innerHTML = "Payment has been successfully completed.<br>Your code is currently being prepared.<br>It may take a few days.";
-} else {
-    msg.innerHTML = "Invalid ID or Reference.";
-}
+        msg.style.color = "var(--secondary)"; // Make it glow blue on success
+        msg.innerHTML = "Payment has been successfully completed.<br>Your code is currently being prepared.<br>It may take a few days.";
+    } else {
+        msg.style.color = "var(--primary)"; // Keep it red for errors
+        msg.innerHTML = "Invalid ID or Reference.";
+    }
 }
 
 function playGame(){
@@ -406,5 +410,6 @@ function generatePrediction(){
 
 </body>
 </html>
+
 
 
